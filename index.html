@@ -8,7 +8,7 @@
   <!-- Подключаем красивые шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet"> 
 
   <style>
     /* ================= ОБЩИЕ СТИЛИ ================= */
@@ -22,7 +22,8 @@
       --text-main: #f3eaff;
       --text-muted: #b9a9d6;
       --border-color: rgba(212, 175, 55, 0.4);
-    }
+      --sale-red: #e63946; /* Цвет для скидки */
+    } 
 
     html { scroll-behavior: smooth; }
     
@@ -33,11 +34,28 @@
       line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
-    }
+    } 
 
     h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
     a { color: var(--accent-gold); text-decoration: none; }
-    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .container { width: min(1100px, 92%); margin: 0 auto; } 
+
+    /* ================= ПЛАШКА АКЦИИ ================= */
+    .promo-banner {
+      background: linear-gradient(90deg, #b31217, #e52d27);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.8; }
+      100% { opacity: 1; }
+    }
 
     /* ================= ШАПКА ================= */
     header {
@@ -51,18 +69,18 @@
     .logo { font-size: 1.3rem; letter-spacing: 2px; color: var(--accent-gold); font-family: 'Playfair Display', serif; }
     .nav-links { display: flex; gap: 20px; }
     .nav-links a { color: var(--text-muted); font-size: 0.9rem; transition: 0.3s; }
-    .nav-links a:hover { color: var(--accent-gold); }
+    .nav-links a:hover { color: var(--accent-gold); } 
 
     /* ================= ГЛАВНЫЙ ЭКРАН ================= */
     .hero {
-      padding: 120px 0 100px;
+      padding: 100px 0 80px;
       text-align: center;
       background: linear-gradient(rgba(15, 10, 26, 0.8), rgba(15, 10, 26, 0.95)), 
                   url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=1600&q=80') center/cover no-repeat;
     }
     .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px; line-height: 1.2; }
     .hero h1 span { color: var(--accent-gold); font-style: italic; }
-    .hero p { max-width: 600px; margin: 0 auto 40px; color: var(--text-muted); font-size: 1.1rem; }
+    .hero p { max-width: 600px; margin: 0 auto 40px; color: var(--text-muted); font-size: 1.1rem; } 
 
     /* ================= КНОПКИ ================= */
     .btn-gold {
@@ -83,7 +101,7 @@
     .btn-gold:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
-    }
+    } 
 
     /* ================= КАК ПРОХОДИТ ================= */
     .how-it-works {
@@ -113,7 +131,7 @@
       margin-bottom: 15px;
       line-height: 1;
     }
-    .step p { color: var(--text-muted); font-size: 0.95rem; }
+    .step p { color: var(--text-muted); font-size: 0.95rem; } 
 
     /* ================= УСЛУГИ (КАРТОЧКИ) ================= */
     .services-section { padding: 60px 0; }
@@ -133,17 +151,48 @@
       flex-direction: column;
       align-items: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
     }
     .service-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
       border-color: var(--accent-gold);
     }
+    
+    /* Стили для цен со скидкой */
+    .price-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+    .new-price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+    .sale-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--sale-red);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
     .service-icon { color: var(--accent-gold); font-size: 2.5rem; margin-bottom: 15px; }
     .service-card h3 { color: var(--accent-gold); font-size: 1.6rem; margin-bottom: 15px; }
     .service-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1; }
-    .service-price { font-size: 1.4rem; font-weight: 600; color: var(--text-main); margin-bottom: 20px; }
-    .service-card .btn-gold { width: 100%; }
+    .service-card .btn-gold { width: 100%; } 
 
     /* ================= ФОРМА ================= */
     .form-section { padding: 60px 0 100px; }
@@ -171,7 +220,7 @@
     }
     input:focus, select:focus, textarea:focus { border-color: var(--accent-gold); }
     textarea { min-height: 120px; resize: vertical; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; } 
 
     /* ================= ПОДВАЛ ================= */
     footer {
@@ -185,7 +234,7 @@
       margin: 20px auto 0;
       font-size: 0.8rem;
       color: var(--text-muted);
-    }
+    } 
 
     /* ================= АДАПТИВ (ДЛЯ ТЕЛЕФОНОВ) ================= */
     @media (max-width: 768px) {
@@ -196,7 +245,12 @@
     }
   </style>
 </head>
-<body>
+<body> 
+
+  <!-- ПЛАШКА АКЦИИ -->
+  <div class="promo-banner">
+    🔥 ЧЁРНАЯ ПЯТНИЦА: СКИДКА 50% НА ВСЕ УСЛУГИ! 🔥
+  </div>
 
   <!-- ШАПКА -->
   <header>
@@ -210,7 +264,7 @@
         </div>
       </nav>
     </div>
-  </header>
+  </header> 
 
   <!-- ГЛАВНЫЙ ЭКРАН -->
   <section class="hero">
@@ -219,7 +273,7 @@
       <p>Помогу посмотреть на ситуацию под другим углом. Только письменная связь и голосовые сообщения — без звонков и видеосвязи.</p>
       <a href="#booking" class="btn-gold" style="text-decoration: none;">Записаться на расклад</a>
     </div>
-  </section>
+  </section> 
 
   <!-- КАК ПРОХОДИТ -->
   <section id="how" class="how-it-works container">
@@ -238,7 +292,7 @@
         <p><strong>Вы получаете ответ</strong><br>Текст + голосовое сообщение с подробным разбором вашей ситуации.</p>
       </div>
     </div>
-  </section>
+  </section> 
 
   <!-- УСЛУГИ -->
   <section id="services" class="services-section container">
@@ -247,33 +301,45 @@
       
       <!-- Карточка 1 -->
       <div class="service-card">
+        <div class="sale-badge">-50%</div>
         <div class="service-icon">☽</div>
         <h3>Один вопрос</h3>
         <p>Ответ на 1 конкретный вопрос. Разбор текстом или голосовым сообщением.</p>
-        <div class="service-price">990 ₽</div>
+        <div class="price-wrapper">
+          <span class="old-price">990 ₽</span>
+          <span class="new-price">495 ₽</span>
+        </div>
         <button class="btn-gold" onclick="selectService('Один вопрос')">Выбрать</button>
-      </div>
+      </div> 
 
       <!-- Карточка 2 -->
       <div class="service-card">
+        <div class="sale-badge">-50%</div>
         <div class="service-icon">✧</div>
         <h3>Три вопроса</h3>
         <p>Разбор трех сфер. Расширенный текстовый ответ + голосовое сообщение.</p>
-        <div class="service-price">1 900 ₽</div>
+        <div class="price-wrapper">
+          <span class="old-price">1 900 ₽</span>
+          <span class="new-price">950 ₽</span>
+        </div>
         <button class="btn-gold" onclick="selectService('Три вопроса')">Выбрать</button>
-      </div>
+      </div> 
 
       <!-- Карточка 3 -->
       <div class="service-card">
+        <div class="sale-badge">-50%</div>
         <div class="service-icon">☀</div>
         <h3>Глубокий разбор</h3>
         <p>Одна сфера жизни. Большой расклад. Подробный текст + аудиофайл (до 20 мин).</p>
-        <div class="service-price">3 900 ₽</div>
+        <div class="price-wrapper">
+          <span class="old-price">3 900 ₽</span>
+          <span class="new-price">1 950 ₽</span>
+        </div>
         <button class="btn-gold" onclick="selectService('Глубокий разбор')">Выбрать</button>
-      </div>
+      </div> 
 
     </div>
-  </section>
+  </section> 
 
   <!-- ФОРМА ЗАПИСИ -->
   <section id="booking" class="form-section container">
@@ -291,19 +357,19 @@
       <div class="form-group">
         <select id="service">
           <option value="">Выберите формат консультации</option>
-          <option value="Один вопрос">Один вопрос — 990 ₽</option>
-          <option value="Три вопроса">Три вопроса — 1 900 ₽</option>
-          <option value="Глубокий разбор">Глубокий разбор — 3 900 ₽</option>
+          <option value="Один вопрос">Один вопрос — 495 ₽ (со скидкой)</option>
+          <option value="Три вопроса">Три вопроса — 950 ₽ (со скидкой)</option>
+          <option value="Глубокий разбор">Глубокий разбор — 1 950 ₽ (со скидкой)</option>
         </select>
-      </div>
+      </div> 
 
       <div class="form-group">
         <textarea id="question" placeholder="Опишите ваш вопрос (без очень личных данных)"></textarea>
-      </div>
+      </div> 
 
       <button type="submit" class="btn-gold" style="width: 100%;">Отправить заявку</button>
     </form>
-  </section>
+  </section> 
 
   <!-- ПОДВАЛ -->
   <footer>
@@ -314,38 +380,32 @@
         Услуги носят консультационный характер.<br>© 2026 LUNÉRA
       </p>
     </div>
-  </footer>
+  </footer> 
 
   <!-- ЛОГИКА (JS) -->
   <script>
     // Функция для кнопок "Выбрать" — автоматически выбирает услугу и прокручивает к форме
     function selectService(serviceName) {
-      // Прокручиваем к форме
       document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-      
-      // Подставляем выбранную услугу в выпадающий список
       const select = document.getElementById('service');
       if (serviceName === 'Один вопрос') select.value = 'Один вопрос';
       if (serviceName === 'Три вопроса') select.value = 'Три вопроса';
       if (serviceName === 'Глубокий разбор') select.value = 'Глубокий разбор';
-    }
+    } 
 
     // Обработка отправки формы (Пока в демо-режиме)
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Останавливаем перезагрузку страницы
+      e.preventDefault(); 
       
       const name = document.getElementById('name').value;
-      const contact = document.getElementById('contact').value;
       const service = document.getElementById('service').value;
       
       if (!service) {
         alert('Пожалуйста, выберите формат консультации из списка.');
         return;
-      }
+      } 
 
       alert('✅ Спасибо, ' + name + '!\n\nВаша заявка на "' + service + '" принята.\nВ будущем она будет прилетать вам в Telegram.');
-      
-      // Очищаем форму
       this.reset();
     });
   </script>
